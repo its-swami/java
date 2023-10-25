@@ -1,6 +1,8 @@
 package com.java.array;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class TwoSumArrayTarget {
     public static void main(String[] args) {
@@ -14,6 +16,9 @@ public class TwoSumArrayTarget {
 
         result = findSum3(arr, 9);
         System.out.println("Result 3: " + result[0] + " " + result[1]);
+
+        result = findSum3(arr, 9);
+        System.out.println("Result 4: " + result[0] + " " + result[1]);
     }
 
     public static int[] findSum1(int[] arr, int target) {
@@ -40,7 +45,7 @@ public class TwoSumArrayTarget {
         for (int i =0; i< arr.length; i++) {
             map.put(arr[i], 1);
         }
-
+        System.out.println(map);
         for (int j =0; j < arr.length; j++) {
             int diff = target - arr[j];
             if (map.containsKey(diff) && diff != arr[j]) {
@@ -67,6 +72,20 @@ public class TwoSumArrayTarget {
 
 
         return result;
+    }
+
+    public static void findSum4(int[] arr, int sumVal)
+    {
+        Set<Integer> set = new HashSet<>();
+        for (int i=0; i<arr.length; i++)
+        {
+            int complement = sumVal-arr[i];
+            if (set.contains(complement))
+            {
+                System.out.println("Result is "+complement+","+arr[i]);
+            }
+            set.add(arr[i]);
+        }
     }
 
 }
